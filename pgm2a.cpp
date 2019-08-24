@@ -18,7 +18,7 @@ using namespace std;
 			
 		}
 			
-			cout<<k<< "the smallest element is:"<<a[k-1]<<"\n";
+			cout<<k<< "th smallest element is:"<<a[k-1]<<"\n";
 			
 		  
   }
@@ -26,12 +26,12 @@ using namespace std;
   int main()
   {
 	  int *a,n,k;
-	  cout<<"enter number of elements :";
+	  cout<<"enter the number of elements :";
 	  cin>>n;
 	  a=new int[n];
 	  for(int i=0;i<n;i++)
 	  {
-		  cout<<"enter element :";
+		  cout<<"enter  the element :";
 		  cin>>a[i];
 		  
 	  }
