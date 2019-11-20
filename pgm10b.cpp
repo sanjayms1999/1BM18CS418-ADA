@@ -1,72 +1,31 @@
-#include <bits/stdc++.h> 
-using namespace std; 
-
-#define V 4 
-#define INF 99999 
-
-void printSolution(int dist[][V]); 
-
-void floyd(int graph[][V]) 
-{ 
-	
-	int dist[V][V], i, j, k; 
-
-	
-	for (i = 0; i < V; i++) 
-		for (j = 0; j < V; j++) 
-			dist[i][j] = graph[i][j]; 
-
-	
-	for (k = 0; k < V; k++) 
-	{ 
-		for (i = 0; i < V; i++) 
-		{ 
-			for (j = 0; j < V; j++) 
-			{ 
-				
-				if (dist[i][k] + dist[k][j] < dist[i][j]) 
-					dist[i][j] = dist[i][k] + dist[k][j]; 
-			} 
-		} 
-	} 
-
-	printSolution(dist); 
-} 
-
-void printSolution(int dist[][V]) 
-{ 
-	cout<<"The following matrix shows the shortest distances"
-			" between every pair of vertices \n"; 
-	for (int i = 0; i < V; i++) 
-	{ 
-		for (int j = 0; j < V; j++) 
-		{ 
-			if (dist[i][j] == INF) 
-				cout<<"INF"<<"	 "; 
-			else
-				cout<<dist[i][j]<<"	 "; 
-		} 
-		cout<<endl; 
-	} 
-} 
-
-int main() 
-{ 
-
-	int graph[V][V] = { {0, 5, INF, 10}, 
-						{INF, 0, 3, INF}, 
-						{INF, INF, 0, 1}, 
-						{INF, INF, INF, 0} 
-					}; 
-
-	floyd(graph); 
-	return 0; 
-} 
-/*
-OUTPUT
-The following matrix shows the shortest distances between every pair of vertices 
-0	    5	     8	    9	 
-INF	  0	     3	    4	 
-INF	  INF	   0	    1	 
-INF	  INF	   INF	  0	
-*/
+#include<bits/stdc++.h>
+using namespace std;
+int a[10][10],n;
+void floyds(){
+    for(int k=1;k<=n;k++){
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                a[i][j]=min(a[i][j],a[i][k]+a[k][j]);
+            }
+        }
+    }
+    cout<<"All pair shortest path matrix is:\n";
+    for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                cout<<a[i][j]<<"\t";
+            }
+            cout<<"\n";
+        }
+}
+int main(){
+    cout<<"Enter the no. of vertices:\n";
+    cin>>n;
+    cout<<"Enter the path matrix:\n";
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cin>>a[i][j];
+        }
+    }
+    floyds();
+    return 0;
+}
